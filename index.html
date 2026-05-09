@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Time Zones of the World Map | Current Local Times & GMT Offsets</title>
+  <meta name="description" content="Explore an interactive time zones of the world map. See current local times, timezone names, GMT and UTC offsets, daylight saving status, countries, capitals, flags, and fun facts." />
+  <meta name="keywords" content="time zones of the world, world time zone map, interactive time zone map, GMT offset map, UTC offset map, current time zones, local time around the world, daylight saving time map" />
+  <meta name="author" content="Time Zones of the World" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <link rel="canonical" href="https://timezonesoftheworld.com/" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Time Zones of the World Map | Current Local Times & GMT Offsets" />
+  <meta property="og:description" content="Use this interactive world time zone map to find local times, timezone names, UTC and GMT offsets, and daylight saving status around the world." />
+  <meta property="og:url" content="https://timezonesoftheworld.com/" />
+  <meta property="og:image" content="https://timezonesoftheworld.com/social-preview.png" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Time Zones of the World Map" />
+  <meta name="twitter:description" content="Interactive map of world time zones, current local times, GMT/UTC offsets, and daylight saving status." />
+  <meta name="twitter:image" content="https://timezonesoftheworld.com/social-preview.png" />
+
+  <!-- Favicon / browser tab logo -->
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
+  <link rel="shortcut icon" href="favicon.ico" />
+
+  <link rel="preconnect" href="https://unpkg.com" crossorigin />
+  <link rel="preconnect" href="https://restcountries.com" crossorigin />
+  <link rel="preconnect" href="https://en.wikipedia.org" crossorigin />
+  <link rel="preconnect" href="https://commons.wikimedia.org" crossorigin />
+
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+  />
+
+  <link rel="stylesheet" href="style.css" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Time Zones of the World Map",
+    "url": "https://timezonesoftheworld.com/",
+    "applicationCategory": "EducationalApplication",
+    "operatingSystem": "Any",
+    "description": "An interactive world time zone map showing current local times, timezone names, GMT and UTC offsets, daylight saving status, countries, capitals, flags, and facts.",
+    "isAccessibleForFree": true,
+    "inLanguage": "en"
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is a time zone map?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A time zone map shows how the world is divided into regions that use the same standard time. This interactive map displays timezone names, current local times, GMT offsets, UTC offsets, and daylight saving status."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I find the current time in another country?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Hover over a country or timezone on the map to see its local time, timezone identifier, GMT offset, and whether daylight saving time is currently active."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between GMT and UTC?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "GMT, or Greenwich Mean Time, is a time standard historically linked to Greenwich, London. UTC, or Coordinated Universal Time, is the modern global time standard used for international timekeeping. They are often shown with the same zero offset."
+        }
+      }
+    ]
+  }
+  </script>
+</head>
+
+<body>
+  <header class="topbar">
+    <div>
+      <h1>Time Zones of the World Map</h1>
+      <p>Explore current local times, timezone names, GMT and UTC offsets, and daylight saving status across the world.</p>
+    </div>
+
+    <div class="gmt-box" aria-label="Current Greenwich Mean Time">
+      <span>Greenwich Mean Time</span>
+      <strong id="gmt-time">--:--:--</strong>
+    </div>
+  </header>
+
+  <main>
+    <section class="intro-section world-clock-section" aria-labelledby="world-clock-title">
+      <div class="world-clock-heading">
+        <span class="clock-eyebrow">Live world clocks</span>
+        <h2 id="world-clock-title">Current time around the world</h2>
+        <p>
+          Compare local times in four major global cities before diving into the interactive world time zone map.
+        </p>
+      </div>
+
+      <div class="world-clock-grid" aria-label="Current times in major world cities">
+        <article class="world-clock-card">
+          <div>
+            <span class="city-name">New York</span>
+            <span class="timezone-label">America/New_York</span>
+          </div>
+          <strong class="world-clock-time" data-timezone="America/New_York">--:--:--</strong>
+          <span class="world-clock-date" data-date-timezone="America/New_York">Loading...</span>
+        </article>
+
+        <article class="world-clock-card">
+          <div>
+            <span class="city-name">London</span>
+            <span class="timezone-label">Europe/London</span>
+          </div>
+          <strong class="world-clock-time" data-timezone="Europe/London">--:--:--</strong>
+          <span class="world-clock-date" data-date-timezone="Europe/London">Loading...</span>
+        </article>
+
+        <article class="world-clock-card">
+          <div>
+            <span class="city-name">Tokyo</span>
+            <span class="timezone-label">Asia/Tokyo</span>
+          </div>
+          <strong class="world-clock-time" data-timezone="Asia/Tokyo">--:--:--</strong>
+          <span class="world-clock-date" data-date-timezone="Asia/Tokyo">Loading...</span>
+        </article>
+
+        <article class="world-clock-card">
+          <div>
+            <span class="city-name">Sydney</span>
+            <span class="timezone-label">Australia/Sydney</span>
+          </div>
+          <strong class="world-clock-time" data-timezone="Australia/Sydney">--:--:--</strong>
+          <span class="world-clock-date" data-date-timezone="Australia/Sydney">Loading...</span>
+        </article>
+      </div>
+    </section>
+
+    <div class="layout">
+      <section class="map-area" aria-labelledby="map-title">
+        <h2 id="map-title" class="visually-hidden">World map with current time zones and GMT offsets</h2>
+
+        <div id="map-wrapper">
+          <div id="top-offset-bar" class="offset-bar" aria-hidden="true"></div>
+          <div id="map" role="application" aria-label="Interactive map of world time zones, local times, and GMT offsets"></div>
+          <div id="offset-bar" class="offset-bar" aria-hidden="true"></div>
+        </div>
+
+        <section class="seo-content compact-seo" aria-labelledby="guide-title">
+          <h2 id="guide-title">About this world time zone map</h2>
+
+          <p>
+            This interactive map shows the time zones of the world, including current local times, GMT and UTC offsets, timezone names, and daylight saving status. Use it to compare world times quickly and understand how different countries and regions are grouped by time zone.
+          </p>
+
+          <details>
+            <summary>Learn more about world time zones</summary>
+
+            <p>
+              A time zone map shows regions that share the same standard time. This map helps answer common searches such as world time zone map, current time around the world, GMT offset map, UTC offset by country, and daylight saving time map.
+            </p>
+
+            <ul>
+              <li>Check current local time in countries and regions</li>
+              <li>See official timezone names such as Europe/London or America/New_York</li>
+              <li>Compare GMT and UTC offsets across the world</li>
+              <li>See whether a location is using standard time or daylight saving time</li>
+            </ul>
+          </details>
+        </section>
+      </section>
+
+      <aside class="info-panel" aria-label="Timezone and country information panel">
+        <h2>Hovered Timezone</h2>
+
+        <div id="timezone-info">
+          <p>Hover over the map to see timezone information.</p>
+        </div>
+
+        <hr class="panel-divider" />
+
+        <h2 id="country-title" class="hidden">Clicked Country</h2>
+
+        <div id="country-info">
+          <p>Click on a country to see a visual gallery, flag, and a fun fact.</p>
+        </div>
+      </aside>
+    </div>
+
+    <noscript>
+      <section class="noscript-warning">
+        <h2>JavaScript is required for the interactive time zone map</h2>
+        <p>This website uses JavaScript to display current local times, timezone boundaries, GMT offsets, and country information. Please enable JavaScript to use the interactive map.</p>
+      </section>
+    </noscript>
+  </main>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" defer></script>
+  <script src="script.js" defer></script>
+</body>
+</html>
