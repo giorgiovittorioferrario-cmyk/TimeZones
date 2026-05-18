@@ -1050,3 +1050,247 @@ body {
   background: linear-gradient(135deg, #ffffff, #f8fbff);
   border: 1px solid #dbeafe;
 }
+<<<<<<< HEAD
+=======
+
+/* ---------- FINAL LAYOUT UPDATE: PLUGS-STYLE WIDTH + LOGO BLUE BACKGROUND ---------- */
+
+:root {
+  --site-blue: #075aa8;
+  --site-blue-dark: #003f7f;
+  --site-blue-mid: #0b72d9;
+  --site-blue-soft: #b9dbf6;
+  --site-shell-width: 1240px;
+}
+
+body {
+  background:
+    radial-gradient(circle at 16% 14%, rgba(255, 255, 255, 0.22), transparent 26%),
+    radial-gradient(circle at 82% 20%, rgba(0, 166, 255, 0.22), transparent 28%),
+    linear-gradient(180deg, #d5ecff 0%, #b5d9f2 48%, #8fc2e7 100%);
+  color: #0f172a;
+}
+
+main {
+  max-width: none;
+  width: 100%;
+}
+
+/* Make the clock panel match the wider proportions of the plug guide panel. */
+.intro-section.world-clock-section {
+  width: min(var(--site-shell-width), calc(100% - 64px));
+  max-width: var(--site-shell-width);
+  margin: 28px auto 10px;
+  padding: 30px 34px;
+  grid-template-columns: minmax(260px, 0.95fr) minmax(0, 2.15fr);
+  gap: 28px;
+  border-radius: 26px;
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.97), rgba(248, 251, 255, 0.93));
+  border: 1px solid rgba(147, 197, 253, 0.92);
+  box-shadow:
+    0 28px 70px rgba(0, 63, 127, 0.16),
+    0 0 72px rgba(7, 90, 168, 0.16),
+    inset 0 1px 0 rgba(255, 255, 255, 0.96);
+}
+
+.world-clock-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.world-clock-card {
+  min-height: 168px;
+  border-color: rgba(147, 197, 253, 0.92);
+  background:
+    radial-gradient(circle at top left, rgba(11, 114, 217, 0.14), transparent 36%),
+    linear-gradient(145deg, #ffffff, #f7fbff);
+}
+
+.clock-eyebrow {
+  background: rgba(7, 90, 168, 0.12);
+  color: var(--site-blue);
+}
+
+/* Center the map + side panel as one wider block, like the reference site. */
+.layout {
+  width: min(var(--site-shell-width), calc(100% - 64px));
+  max-width: var(--site-shell-width);
+  margin: 0 auto 52px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 350px;
+  gap: 40px;
+  align-items: start;
+  min-height: 0;
+}
+
+.map-area {
+  padding: 30px 0 0;
+  min-width: 0;
+}
+
+/* Start the right panel at the exact visual height of the map, not beside the clock panel. */
+.info-panel {
+  margin-top: 30px;
+  align-self: start;
+  border-left: none;
+  border-radius: 0;
+  min-height: 640px;
+  padding: 30px;
+  background: rgba(255, 255, 255, 0.96);
+  border: 1px solid rgba(191, 219, 254, 0.95);
+  box-shadow:
+    0 28px 70px rgba(0, 63, 127, 0.11),
+    0 0 48px rgba(7, 90, 168, 0.10);
+}
+
+#map-wrapper {
+  border-radius: 22px;
+  border-color: rgba(147, 197, 253, 0.95);
+}
+
+#map,
+.leaflet-container {
+  background-color: #a7cfe8;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.22) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.22) 1px, transparent 1px),
+    linear-gradient(rgba(7, 90, 168, 0.12) 2px, transparent 2px),
+    linear-gradient(90deg, rgba(7, 90, 168, 0.12) 2px, transparent 2px);
+}
+
+.seo-content.compact-seo {
+  margin-top: 24px;
+}
+
+@media (max-width: 1100px) {
+  .intro-section.world-clock-section,
+  .layout {
+    width: min(100% - 36px, var(--site-shell-width));
+  }
+
+  .intro-section.world-clock-section {
+    grid-template-columns: 1fr;
+  }
+
+  .layout {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .map-area {
+    padding-top: 24px;
+  }
+
+  .info-panel {
+    margin-top: 0;
+    min-height: auto;
+    border-radius: 24px;
+  }
+}
+
+@media (max-width: 700px) {
+  .intro-section.world-clock-section,
+  .layout {
+    width: calc(100% - 28px);
+  }
+
+  .intro-section.world-clock-section {
+    padding: 22px;
+  }
+
+  .world-clock-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ---------- REVISION: CLOSER TO PLUGTYPESOFTHEWORLD SPACING ---------- */
+
+:root {
+  --site-shell-width: 1400px;
+}
+
+/* Less side margin, more full-width like the plug map site. */
+.intro-section.world-clock-section,
+.layout {
+  width: min(var(--site-shell-width), calc(100% - 40px));
+}
+
+/* Make the clock panel feel thicker/taller like the plug guide panel. */
+.intro-section.world-clock-section {
+  margin-top: 30px;
+  margin-bottom: 8px;
+  padding: 40px 38px;
+  min-height: 292px;
+  grid-template-columns: minmax(300px, 0.92fr) minmax(0, 2.3fr);
+  gap: 32px;
+  border-radius: 30px;
+}
+
+.world-clock-heading h2 {
+  font-size: 34px;
+  line-height: 1.08;
+  letter-spacing: -1.1px;
+}
+
+.world-clock-heading p {
+  font-size: 16px;
+  max-width: 340px;
+}
+
+.world-clock-grid {
+  gap: 16px;
+}
+
+.world-clock-card {
+  min-height: 198px;
+  padding: 22px;
+  border-radius: 24px;
+}
+
+.city-name {
+  font-size: 22px;
+}
+
+.world-clock-time {
+  font-size: 32px;
+}
+
+/* Give the map block more room without squeezing the side panel too much. */
+.layout {
+  grid-template-columns: minmax(0, 1fr) 360px;
+  gap: 44px;
+}
+
+.map-area {
+  padding-top: 32px;
+}
+
+.info-panel {
+  margin-top: 32px;
+  min-height: 640px;
+}
+
+@media (max-width: 1100px) {
+  .intro-section.world-clock-section,
+  .layout {
+    width: calc(100% - 32px);
+  }
+
+  .intro-section.world-clock-section {
+    min-height: auto;
+    padding: 30px;
+  }
+}
+
+@media (max-width: 700px) {
+  .intro-section.world-clock-section,
+  .layout {
+    width: calc(100% - 24px);
+  }
+
+  .intro-section.world-clock-section {
+    padding: 22px;
+  }
+}
+>>>>>>> d14b168 (Update website layout)
