@@ -883,3 +883,170 @@ body {
     font-size: 34px;
   }
 }
+
+/* ---------- FIX BLUE THEME WITHOUT TOP GAP ---------- */
+
+/* Remove accidental top spacing */
+body::before {
+  content: none !important;
+  display: none !important;
+}
+
+/* Page background */
+body {
+  background:
+    radial-gradient(circle at 18% 8%, rgba(0, 102, 204, 0.18), transparent 26%),
+    radial-gradient(circle at 82% 12%, rgba(0, 166, 255, 0.14), transparent 30%),
+    linear-gradient(180deg, #f7fbff 0%, #e6f3ff 100%);
+  color: #0f172a;
+}
+
+/* Top panel/title area */
+.topbar {
+  background: #ffffff;
+  border-bottom: 1px solid rgba(0, 102, 204, 0.12);
+  box-shadow:
+    0 18px 42px rgba(30, 64, 175, 0.08),
+    0 0 46px rgba(0, 166, 255, 0.08);
+}
+
+/* Main title */
+.topbar h1 {
+  color: #0057b8;
+  background: linear-gradient(
+    90deg,
+    #003b7a 0%,
+    #0066cc 42%,
+    #00a6ff 72%,
+    #003b7a 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.topbar p {
+  color: #334155;
+}
+
+/* Blue glow strip starts BELOW title, not above it */
+.plug-section {
+  margin-top: 32px;
+  background: rgba(255, 255, 255, 0.96);
+  border: 1px solid rgba(147, 197, 253, 0.85);
+  box-shadow:
+    0 24px 62px rgba(30, 64, 175, 0.10),
+    0 0 66px rgba(0, 166, 255, 0.10),
+    inset 0 1px 0 rgba(255, 255, 255, 0.96);
+}
+
+/* Small labels */
+.plug-eyebrow {
+  background: rgba(0, 102, 204, 0.12);
+  color: #0066cc;
+}
+
+/* Cards */
+.plug-card {
+  border: 1px solid rgba(147, 197, 253, 0.85);
+  background: linear-gradient(135deg, #ffffff, #f8fbff);
+  box-shadow:
+    0 14px 34px rgba(30, 64, 175, 0.07),
+    inset 0 1px 0 rgba(255, 255, 255, 0.98);
+}
+
+.plug-image,
+.large-plug-photo,
+.plug-detail-main-photo {
+  border: 1px solid #dbeafe;
+  background: #ffffff;
+  box-shadow:
+    0 12px 28px rgba(30, 64, 175, 0.11),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+/* Map wrapper */
+#map-wrapper {
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(147, 197, 253, 0.95);
+  box-shadow:
+    0 28px 70px rgba(30, 64, 175, 0.14),
+    0 0 55px rgba(0, 166, 255, 0.11),
+    0 0 80px rgba(0, 102, 204, 0.08);
+}
+
+/* Map background */
+#map,
+.leaflet-container {
+  background-color: #bfdbfe;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.28) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.28) 1px, transparent 1px),
+    linear-gradient(rgba(0, 102, 204, 0.10) 2px, transparent 2px),
+    linear-gradient(90deg, rgba(0, 102, 204, 0.10) 2px, transparent 2px);
+}
+
+/* Info panel */
+.info-panel {
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(248, 251, 255, 0.96));
+  box-shadow:
+    -24px 0 64px rgba(30, 64, 175, 0.08),
+    inset 1px 0 0 rgba(0, 102, 204, 0.08);
+}
+
+/* Plug pills */
+.info-panel .plug-pill,
+.plug-pill {
+  background: #0066cc;
+  box-shadow: 0 12px 24px rgba(0, 102, 204, 0.20);
+}
+
+/* Detail card */
+.plug-detail-card {
+  border: 1px solid rgba(147, 197, 253, 0.95);
+  background: #ffffff;
+  box-shadow:
+    0 24px 60px rgba(30, 64, 175, 0.10),
+    0 0 38px rgba(0, 166, 255, 0.12);
+}
+
+.plug-detail-header {
+  background:
+    radial-gradient(circle at top left, rgba(0, 166, 255, 0.15), transparent 34%),
+    radial-gradient(circle at bottom right, rgba(0, 102, 204, 0.12), transparent 34%),
+    linear-gradient(135deg, #f8fbff, #eaf4ff);
+}
+
+/* Fact/history boxes */
+.fact-box {
+  border: 1px solid #dbeafe;
+  background: linear-gradient(135deg, #ffffff, #f8fbff);
+}
+
+.history-box,
+.info-panel .history-box {
+  background: linear-gradient(135deg, #eff6ff, #dbeafe);
+  border: 1px solid rgba(147, 197, 253, 0.9);
+}
+
+.history-box strong,
+.info-panel .history-box strong {
+  color: #0057b8;
+}
+
+.history-box p {
+  color: #1e3a8a;
+}
+
+/* All plug types section */
+.all-plug-types-section {
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid rgba(147, 197, 253, 0.85);
+  box-shadow: 0 18px 42px rgba(30, 64, 175, 0.08);
+}
+
+.type-reference-card {
+  background: linear-gradient(135deg, #ffffff, #f8fbff);
+  border: 1px solid #dbeafe;
+}
