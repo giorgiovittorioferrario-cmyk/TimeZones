@@ -2,15 +2,26 @@
   box-sizing: border-box;
 }
 
+:root {
+  --site-blue: #075aa8;
+  --site-blue-dark: #003f7f;
+  --site-blue-mid: #0b72d9;
+  --site-shell-width: 1400px;
+}
+
 body {
   margin: 0;
   font-family: Inter, Arial, Helvetica, sans-serif;
   background:
-    radial-gradient(circle at 18% 8%, rgba(59, 130, 246, 0.28), transparent 28%),
-    radial-gradient(circle at 82% 12%, rgba(124, 58, 237, 0.22), transparent 30%),
-    radial-gradient(circle at 50% 100%, rgba(14, 165, 233, 0.18), transparent 32%),
-    linear-gradient(180deg, #f8fafc 0%, #eef2ff 100%);
-  color: #111827;
+    radial-gradient(circle at 16% 14%, rgba(255, 255, 255, 0.22), transparent 26%),
+    radial-gradient(circle at 82% 20%, rgba(0, 166, 255, 0.22), transparent 28%),
+    linear-gradient(180deg, #d5ecff 0%, #b5d9f2 48%, #8fc2e7 100%);
+  color: #0f172a;
+  overflow-x: hidden;
+}
+
+main {
+  width: 100%;
 }
 
 /* ---------- TOP BAR ---------- */
@@ -21,13 +32,11 @@ body {
   align-items: center;
   position: relative;
   padding: 28px 32px 22px;
-  background:
-    linear-gradient(135deg, rgba(255, 255, 255, 0.88), rgba(248, 250, 252, 0.76));
-  backdrop-filter: blur(16px);
-  border-bottom: 1px solid rgba(209, 213, 219, 0.7);
+  background: #ffffff;
+  border-bottom: 1px solid rgba(0, 102, 204, 0.12);
   box-shadow:
-    0 20px 60px rgba(37, 99, 235, 0.12),
-    0 0 80px rgba(124, 58, 237, 0.08);
+    0 18px 42px rgba(30, 64, 175, 0.08),
+    0 0 46px rgba(0, 166, 255, 0.08);
 }
 
 .topbar > div:first-child {
@@ -42,14 +51,15 @@ body {
   letter-spacing: -1.8px;
   font-weight: 800;
   text-align: center;
-  background: linear-gradient(135deg, #1e3a8a, #2563eb, #7c3aed);
+  background: linear-gradient(90deg, #003b7a 0%, #0066cc 42%, #00a6ff 72%, #003b7a 100%);
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 .topbar p {
   margin: 0;
-  color: #4b5563;
+  color: #334155;
   font-size: 18px;
   text-align: center;
 }
@@ -63,7 +73,7 @@ body {
   padding: 16px 18px;
   border: 1px solid rgba(147, 197, 253, 0.85);
   border-radius: 20px;
-  background: rgba(255, 255, 255, 0.85);
+  background: rgba(255, 255, 255, 0.9);
   box-shadow:
     0 18px 45px rgba(37, 99, 235, 0.16),
     0 0 35px rgba(124, 58, 237, 0.12);
@@ -88,46 +98,172 @@ body {
   letter-spacing: 1px;
 }
 
-/* ---------- LAYOUT ---------- */
+/* ---------- WORLD CLOCK PANEL ---------- */
+
+.intro-section,
+.noscript-warning {
+  max-width: 1120px;
+  margin: 28px auto;
+  padding: 28px 32px;
+  border: 1px solid rgba(209, 213, 219, 0.85);
+  border-radius: 24px;
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.92), rgba(248, 250, 252, 0.86));
+  box-shadow:
+    0 18px 45px rgba(15, 23, 42, 0.08),
+    0 0 35px rgba(59, 130, 246, 0.08);
+}
+
+.intro-section.world-clock-section {
+  width: min(var(--site-shell-width), calc(100% - 40px));
+  max-width: var(--site-shell-width);
+  margin: 30px auto 8px;
+  padding: 40px 38px;
+  min-height: 292px;
+  display: grid;
+  grid-template-columns: minmax(300px, 0.92fr) minmax(0, 2.3fr);
+  gap: 32px;
+  align-items: center;
+  border-radius: 30px;
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.97), rgba(248, 251, 255, 0.93));
+  border: 1px solid rgba(147, 197, 253, 0.92);
+  box-shadow:
+    0 28px 70px rgba(0, 63, 127, 0.16),
+    0 0 72px rgba(7, 90, 168, 0.16),
+    inset 0 1px 0 rgba(255, 255, 255, 0.96);
+}
+
+.clock-eyebrow {
+  display: inline-flex;
+  margin-bottom: 10px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: rgba(7, 90, 168, 0.12);
+  color: var(--site-blue);
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.world-clock-heading h2 {
+  margin-top: 0;
+  margin-bottom: 10px;
+  color: #0f172a;
+  font-size: 34px;
+  line-height: 1.08;
+  letter-spacing: -1.1px;
+}
+
+.world-clock-heading p {
+  color: #4b5563;
+  font-size: 16px;
+  line-height: 1.55;
+  max-width: 340px;
+}
+
+.world-clock-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.world-clock-card {
+  min-height: 198px;
+  padding: 22px;
+  border-radius: 24px;
+  border: 1px solid rgba(147, 197, 253, 0.92);
+  background:
+    radial-gradient(circle at top left, rgba(11, 114, 217, 0.14), transparent 36%),
+    linear-gradient(145deg, #ffffff, #f7fbff);
+  box-shadow:
+    0 18px 38px rgba(15, 23, 42, 0.1),
+    0 0 28px rgba(59, 130, 246, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.city-name {
+  display: block;
+  color: #0f172a;
+  font-size: 22px;
+  font-weight: 900;
+  letter-spacing: -0.5px;
+}
+
+.timezone-label {
+  display: block;
+  margin-top: 4px;
+  color: #64748b;
+  font-size: 11px;
+  font-weight: 800;
+  word-break: break-word;
+}
+
+.world-clock-time {
+  display: block;
+  margin-top: 18px;
+  color: #111827;
+  font-family: monospace;
+  font-size: 32px;
+  line-height: 1;
+  letter-spacing: -0.8px;
+}
+
+.world-clock-date {
+  display: block;
+  margin-top: 10px;
+  color: #4b5563;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+/* ---------- DESKTOP LAYOUT ---------- */
 
 .layout {
+  width: min(var(--site-shell-width), calc(100% - 40px));
+  max-width: var(--site-shell-width);
+  margin: 0 auto 52px;
   display: grid;
-  grid-template-columns: 1fr 340px;
-  min-height: calc(100vh - 120px);
+  grid-template-columns: minmax(0, 1fr) 360px;
+  gap: 44px;
+  align-items: start;
 }
 
 .map-area {
-  padding: 30px;
+  padding-top: 32px;
+  min-width: 0;
 }
 
 #map-wrapper {
-  background: rgba(255, 255, 255, 0.88);
-  border: 1px solid rgba(209, 213, 219, 0.85);
-  border-radius: 24px;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(147, 197, 253, 0.95);
+  border-radius: 22px;
   overflow: hidden;
   box-shadow:
-    0 28px 70px rgba(15, 23, 42, 0.14),
-    0 0 55px rgba(59, 130, 246, 0.13),
-    0 0 80px rgba(124, 58, 237, 0.08);
+    0 28px 70px rgba(30, 64, 175, 0.14),
+    0 0 55px rgba(0, 166, 255, 0.11),
+    0 0 80px rgba(0, 102, 204, 0.08);
 }
 
 #map {
   width: 100%;
   height: 640px;
-  background: #dbe8ef;
+  background: #a7cfe8;
 }
 
-/* ---------- INFO PANEL ---------- */
-
 .info-panel {
-  background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(248, 250, 252, 0.86));
-  border-left: 1px solid rgba(209, 213, 219, 0.85);
-  padding: 28px;
-  backdrop-filter: blur(16px);
+  margin-top: 32px;
+  min-height: 640px;
+  padding: 30px;
+  border: 1px solid rgba(191, 219, 254, 0.95);
+  background: rgba(255, 255, 255, 0.96);
   box-shadow:
-    -18px 0 55px rgba(15, 23, 42, 0.06),
-    0 0 50px rgba(37, 99, 235, 0.08);
+    0 28px 70px rgba(0, 63, 127, 0.11),
+    0 0 48px rgba(7, 90, 168, 0.10);
   overflow-y: auto;
 }
 
@@ -138,7 +274,6 @@ body {
   font-weight: 850;
   letter-spacing: -1.1px;
   color: #0f172a;
-  text-shadow: 0 0 18px rgba(37, 99, 235, 0.12);
 }
 
 .info-label {
@@ -158,13 +293,11 @@ body {
   color: #111827;
   word-break: break-word;
   font-weight: 750;
-  letter-spacing: -0.4px;
 }
 
 .big-time {
   font-size: 42px;
   font-weight: bold;
-  letter-spacing: 1px;
 }
 
 .offset {
@@ -217,10 +350,11 @@ body {
   margin-top: 5px;
 }
 
-/* ---------- MAP / LEAFLET ---------- */
+/* ---------- LEAFLET ---------- */
 
 .leaflet-container {
   font-family: Inter, Arial, Helvetica, sans-serif;
+  background-color: #a7cfe8;
 }
 
 .leaflet-control-zoom a {
@@ -239,26 +373,27 @@ body {
   font-weight: 600;
 }
 
-/* ---------- CAPITAL CITIES ---------- */
-
-.capital-city-marker {
-  width: 10px;
-  height: 10px;
-  background: #111827;
-  border: 2px solid white;
-  border-radius: 50%;
-  box-shadow: 0 0 0 3px rgba(17, 24, 39, 0.2);
+.leaflet-control-attribution {
+  display: none !important;
 }
 
-.capital-city-label {
-  background: rgba(17, 24, 39, 0.92);
-  color: white;
-  border: none;
-  border-radius: 999px;
-  padding: 4px 9px;
-  font-size: 11px;
-  font-weight: 700;
-  box-shadow: 0 8px 18px rgba(15, 23, 42, 0.22);
+.leaflet-control-home {
+  width: 34px;
+  height: 34px;
+  margin: 10px 0 0 10px;
+  border: 2px solid rgba(203, 213, 225, 0.95);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.96);
+  color: #111827;
+  font-size: 23px;
+  line-height: 28px;
+  font-weight: 900;
+  cursor: pointer;
+  box-shadow: 0 8px 18px rgba(15, 23, 42, 0.12);
+}
+
+.leaflet-control-home:hover {
+  background: #f8fafc;
 }
 
 /* ---------- COUNTRY PANEL ---------- */
@@ -293,23 +428,14 @@ body {
   line-height: 1.5;
 }
 
-.country-card {
-  border: 1px solid rgba(209, 213, 219, 0.9);
-  border-radius: 20px;
-  overflow: hidden;
-  background: #ffffff;
-  box-shadow: 0 16px 34px rgba(15, 23, 42, 0.12);
-}
-
+.country-card,
 .bento-country-card {
-  border-radius: 26px;
+  border-radius: 24px;
   border: 1px solid rgba(191, 219, 254, 0.95);
-  background:
-    linear-gradient(145deg, rgba(255, 255, 255, 0.96), rgba(248, 250, 252, 0.9));
+  background: #ffffff;
   box-shadow:
     0 24px 60px rgba(15, 23, 42, 0.12),
-    0 0 38px rgba(59, 130, 246, 0.14),
-    inset 0 1px 0 rgba(255, 255, 255, 0.95);
+    0 0 38px rgba(59, 130, 246, 0.14);
   overflow: hidden;
 }
 
@@ -317,21 +443,16 @@ body {
   padding: 16px;
 }
 
-.country-header {
+.country-header,
+.bento-country-header {
   display: flex;
   align-items: center;
   gap: 12px;
   margin-bottom: 14px;
-}
-
-.bento-country-header {
   padding: 14px;
   border-radius: 18px;
   background: linear-gradient(135deg, #ffffff, #f8fafc);
   border: 1px solid #e2e8f0;
-  box-shadow:
-    0 12px 28px rgba(15, 23, 42, 0.07),
-    0 0 24px rgba(59, 130, 246, 0.07);
 }
 
 .country-flag {
@@ -351,7 +472,6 @@ body {
   font-weight: 850;
   letter-spacing: -0.9px;
   color: #0f172a;
-  text-shadow: 0 0 18px rgba(37, 99, 235, 0.12);
 }
 
 .country-subtitle {
@@ -369,21 +489,12 @@ body {
   margin: 16px 0;
 }
 
-.meta-box {
+.meta-box,
+.bento-box {
   background: #f9fafb;
   border: 1px solid #e5e7eb;
   border-radius: 14px;
   padding: 10px 12px;
-}
-
-.bento-box {
-  border-radius: 18px;
-  background:
-    linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(248, 250, 252, 0.95));
-  border: 1px solid #e2e8f0;
-  box-shadow:
-    0 12px 28px rgba(15, 23, 42, 0.07),
-    0 0 24px rgba(59, 130, 246, 0.07);
 }
 
 .meta-label {
@@ -402,21 +513,13 @@ body {
   line-height: 1.35;
 }
 
-.fun-fact-box {
+.fun-fact-box,
+.bento-fun-fact {
   margin-top: 12px;
   padding: 14px;
-  border-radius: 14px;
+  border-radius: 18px;
   background: linear-gradient(135deg, #ecfeff, #eff6ff);
   border: 1px solid rgba(125, 211, 252, 0.9);
-}
-
-.bento-fun-fact {
-  border-radius: 20px;
-  background:
-    linear-gradient(135deg, rgba(236, 254, 255, 0.95), rgba(239, 246, 255, 0.95));
-  box-shadow:
-    0 12px 28px rgba(15, 23, 42, 0.07),
-    0 0 24px rgba(59, 130, 246, 0.07);
 }
 
 .fun-fact-box strong {
@@ -428,11 +531,6 @@ body {
   letter-spacing: 0.8px;
 }
 
-.bento-fun-fact strong {
-  font-weight: 900;
-  letter-spacing: 1px;
-}
-
 .fun-fact-box p {
   margin: 0;
   color: #164e63;
@@ -440,11 +538,7 @@ body {
   font-size: 14px;
 }
 
-.bento-fun-fact p {
-  font-weight: 600;
-}
-
-/* ---------- COUNTRY PHOTO GALLERY ---------- */
+/* ---------- COUNTRY GALLERY ---------- */
 
 .country-gallery-carousel {
   position: relative;
@@ -463,11 +557,7 @@ body {
   height: 100%;
   border-radius: 20px;
   overflow: hidden;
-  background:
-    radial-gradient(circle at center, rgba(255, 255, 255, 0.9), rgba(226, 232, 240, 0.85));
-  box-shadow:
-    0 16px 34px rgba(15, 23, 42, 0.16),
-    0 0 26px rgba(37, 99, 235, 0.14);
+  background: #e5e7eb;
 }
 
 .country-gallery-slide {
@@ -488,127 +578,9 @@ body {
   height: 100%;
   object-fit: cover;
   display: block;
-  background: #e5e7eb;
 }
 
-.country-gallery-placeholder {
-  width: 100%;
-  height: 100%;
-  padding: 24px;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: center;
-  background:
-    radial-gradient(circle at 20% 20%, rgba(59, 130, 246, 0.28), transparent 34%),
-    radial-gradient(circle at 80% 80%, rgba(124, 58, 237, 0.24), transparent 34%),
-    linear-gradient(135deg, #dbeafe, #f5d0fe);
-  color: #0f172a;
-}
-
-.country-gallery-placeholder span {
-  margin-bottom: 8px;
-  font-size: 11px;
-  text-transform: uppercase;
-  letter-spacing: 1.3px;
-  font-weight: 900;
-  color: #1d4ed8;
-}
-
-.country-gallery-placeholder strong {
-  display: block;
-  font-size: 18px;
-  line-height: 1.25;
-  font-weight: 900;
-  color: #0f172a;
-}
-
-.country-gallery-placeholder small {
-  margin-top: 8px;
-  font-size: 12px;
-  line-height: 1.35;
-  color: #475569;
-  font-weight: 700;
-}
-
-.country-gallery-tag {
-  position: absolute;
-  left: 12px;
-  bottom: 12px;
-  max-width: calc(100% - 24px);
-  padding: 6px 10px;
-  border-radius: 999px;
-  background: rgba(15, 23, 42, 0.72);
-  color: white;
-  font-size: 10px;
-  font-weight: 850;
-  letter-spacing: 0.7px;
-  text-transform: uppercase;
-  backdrop-filter: blur(10px);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.gallery-arrow {
-  position: absolute;
-  top: 50%;
-  z-index: 5;
-  transform: translateY(-50%);
-  width: 34px;
-  height: 34px;
-  border: none;
-  border-radius: 999px;
-  background: rgba(15, 23, 42, 0.66);
-  color: white;
-  font-size: 28px;
-  line-height: 1;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  backdrop-filter: blur(10px);
-  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.22);
-}
-
-.gallery-arrow:hover {
-  background: rgba(15, 23, 42, 0.86);
-}
-
-.gallery-arrow-left {
-  left: 20px;
-}
-
-.gallery-arrow-right {
-  right: 20px;
-}
-
-/* ---------- MAP STRIPES / RESET CONTROL ---------- */
-
-.leaflet-control-attribution {
-  display: none !important;
-}
-
-.leaflet-control-home {
-  width: 34px;
-  height: 34px;
-  margin: 10px 0 0 10px;
-  border: 2px solid rgba(203, 213, 225, 0.95);
-  border-radius: 10px;
-  background: rgba(255, 255, 255, 0.96);
-  color: #111827;
-  font-size: 23px;
-  line-height: 28px;
-  font-weight: 900;
-  cursor: pointer;
-  box-shadow: 0 8px 18px rgba(15, 23, 42, 0.12);
-}
-
-.leaflet-control-home:hover {
-  background: #f8fafc;
-}
-
-/* ---------- SEO CONTENT / ACCESSIBILITY ---------- */
+/* ---------- SEO ---------- */
 
 .visually-hidden {
   position: absolute;
@@ -620,20 +592,6 @@ body {
   clip-path: inset(50%);
   white-space: nowrap;
   border: 0;
-}
-
-.intro-section,
-.noscript-warning {
-  max-width: 1120px;
-  margin: 28px auto;
-  padding: 28px 32px;
-  border: 1px solid rgba(209, 213, 219, 0.85);
-  border-radius: 24px;
-  background:
-    linear-gradient(135deg, rgba(255, 255, 255, 0.92), rgba(248, 250, 252, 0.86));
-  box-shadow:
-    0 18px 45px rgba(15, 23, 42, 0.08),
-    0 0 35px rgba(59, 130, 246, 0.08);
 }
 
 .seo-content {
@@ -649,7 +607,6 @@ body {
     0 0 35px rgba(59, 130, 246, 0.08);
 }
 
-.intro-section h2,
 .seo-content h2,
 .noscript-warning h2 {
   margin-top: 0;
@@ -657,10 +614,8 @@ body {
   color: #0f172a;
   font-size: 24px;
   line-height: 1.15;
-  letter-spacing: -0.7px;
 }
 
-.intro-section p,
 .seo-content p,
 .noscript-warning p {
   color: #4b5563;
@@ -693,489 +648,46 @@ body {
   line-height: 1.45;
 }
 
-.noscript-warning {
-  border-color: rgba(251, 191, 36, 0.8);
-  background: linear-gradient(135deg, #fffbeb, #fff7ed);
-}
-
-/* ---------- RESPONSIVE ---------- */
+/* ---------- TABLET ---------- */
 
 @media (max-width: 1100px) {
   .topbar {
-    justify-content: flex-start;
-    flex-direction: column;
-    align-items: center;
-    gap: 18px;
+    padding: 24px 24px 20px;
+  }
+
+  .topbar h1 {
+    font-size: 42px;
   }
 
   .gmt-box {
     position: static;
     transform: none;
+    margin-top: 18px;
     align-items: center;
   }
 
-  .layout {
-    grid-template-columns: 1fr;
+  .topbar {
+    flex-direction: column;
   }
 
-  .info-panel {
-    border-left: none;
-    border-top: 1px solid #d1d5db;
-  }
-
-  #map {
-    height: 540px;
-  }
-
-  .seo-content {
-    margin-top: 20px;
-  }
-}
-
-@media (max-width: 700px) {
-  .topbar h1 {
-    font-size: 38px;
-  }
-
-  .topbar p {
-    font-size: 15px;
-  }
-
-  .map-area {
-    padding: 16px;
-  }
-
-  .country-meta {
-    grid-template-columns: 1fr;
-  }
-
-  .intro-section,
-  .noscript-warning {
-    margin: 18px 16px;
-    padding: 22px;
-  }
-
-  .seo-content {
-    padding: 18px;
-  }
-
-  .intro-section h2,
-  .seo-content h2,
-  .noscript-warning h2 {
-    font-size: 22px;
-  }
-}
-
-/* ---------- WORLD CLOCK INTRO BUBBLE ---------- */
-
-.world-clock-section {
-  display: grid;
-  grid-template-columns: 0.9fr 1.4fr;
-  gap: 28px;
-  align-items: center;
-}
-
-.world-clock-heading {
-  min-width: 0;
-}
-
-.clock-eyebrow {
-  display: inline-flex;
-  margin-bottom: 10px;
-  padding: 6px 12px;
-  border-radius: 999px;
-  background: linear-gradient(135deg, #dbeafe, #ede9fe);
-  color: #1d4ed8;
-  font-size: 12px;
-  font-weight: 900;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-}
-
-.world-clock-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 14px;
-}
-
-.world-clock-card {
-  min-height: 170px;
-  padding: 18px;
-  border-radius: 22px;
-  border: 1px solid rgba(191, 219, 254, 0.95);
-  background:
-    radial-gradient(circle at top left, rgba(59, 130, 246, 0.16), transparent 36%),
-    radial-gradient(circle at bottom right, rgba(124, 58, 237, 0.14), transparent 34%),
-    linear-gradient(145deg, rgba(255, 255, 255, 0.96), rgba(248, 250, 252, 0.92));
-  box-shadow:
-    0 18px 38px rgba(15, 23, 42, 0.1),
-    0 0 28px rgba(59, 130, 246, 0.1);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
-}
-
-.world-clock-card:hover {
-  transform: translateY(-4px);
-  box-shadow:
-    0 24px 50px rgba(15, 23, 42, 0.14),
-    0 0 36px rgba(124, 58, 237, 0.14);
-}
-
-.city-name {
-  display: block;
-  color: #0f172a;
-  font-size: 20px;
-  font-weight: 900;
-  letter-spacing: -0.5px;
-}
-
-.timezone-label {
-  display: block;
-  margin-top: 4px;
-  color: #64748b;
-  font-size: 11px;
-  font-weight: 800;
-  word-break: break-word;
-}
-
-.world-clock-time {
-  display: block;
-  margin-top: 18px;
-  color: #111827;
-  font-family: monospace;
-  font-size: 30px;
-  line-height: 1;
-  letter-spacing: -0.8px;
-}
-
-.world-clock-date {
-  display: block;
-  margin-top: 10px;
-  color: #4b5563;
-  font-size: 13px;
-  font-weight: 700;
-}
-
-/* Keep the clocks responsive, because apparently screens come in infinite shapes now */
-
-@media (max-width: 1100px) {
-  .world-clock-section {
-    grid-template-columns: 1fr;
-  }
-
-  .world-clock-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 700px) {
-  .world-clock-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .world-clock-card {
-    min-height: 145px;
-  }
-
-  .world-clock-time {
-    font-size: 34px;
-  }
-}
-
-/* ---------- FIX BLUE THEME WITHOUT TOP GAP ---------- */
-
-/* Remove accidental top spacing */
-body::before {
-  content: none !important;
-  display: none !important;
-}
-
-/* Page background */
-body {
-  background:
-    radial-gradient(circle at 18% 8%, rgba(0, 102, 204, 0.18), transparent 26%),
-    radial-gradient(circle at 82% 12%, rgba(0, 166, 255, 0.14), transparent 30%),
-    linear-gradient(180deg, #f7fbff 0%, #e6f3ff 100%);
-  color: #0f172a;
-}
-
-/* Top panel/title area */
-.topbar {
-  background: #ffffff;
-  border-bottom: 1px solid rgba(0, 102, 204, 0.12);
-  box-shadow:
-    0 18px 42px rgba(30, 64, 175, 0.08),
-    0 0 46px rgba(0, 166, 255, 0.08);
-}
-
-/* Main title */
-.topbar h1 {
-  color: #0057b8;
-  background: linear-gradient(
-    90deg,
-    #003b7a 0%,
-    #0066cc 42%,
-    #00a6ff 72%,
-    #003b7a 100%
-  );
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.topbar p {
-  color: #334155;
-}
-
-/* Blue glow strip starts BELOW title, not above it */
-.plug-section {
-  margin-top: 32px;
-  background: rgba(255, 255, 255, 0.96);
-  border: 1px solid rgba(147, 197, 253, 0.85);
-  box-shadow:
-    0 24px 62px rgba(30, 64, 175, 0.10),
-    0 0 66px rgba(0, 166, 255, 0.10),
-    inset 0 1px 0 rgba(255, 255, 255, 0.96);
-}
-
-/* Small labels */
-.plug-eyebrow {
-  background: rgba(0, 102, 204, 0.12);
-  color: #0066cc;
-}
-
-/* Cards */
-.plug-card {
-  border: 1px solid rgba(147, 197, 253, 0.85);
-  background: linear-gradient(135deg, #ffffff, #f8fbff);
-  box-shadow:
-    0 14px 34px rgba(30, 64, 175, 0.07),
-    inset 0 1px 0 rgba(255, 255, 255, 0.98);
-}
-
-.plug-image,
-.large-plug-photo,
-.plug-detail-main-photo {
-  border: 1px solid #dbeafe;
-  background: #ffffff;
-  box-shadow:
-    0 12px 28px rgba(30, 64, 175, 0.11),
-    inset 0 1px 0 rgba(255, 255, 255, 0.9);
-}
-
-/* Map wrapper */
-#map-wrapper {
-  background: rgba(255, 255, 255, 0.9);
-  border: 1px solid rgba(147, 197, 253, 0.95);
-  box-shadow:
-    0 28px 70px rgba(30, 64, 175, 0.14),
-    0 0 55px rgba(0, 166, 255, 0.11),
-    0 0 80px rgba(0, 102, 204, 0.08);
-}
-
-/* Map background */
-#map,
-.leaflet-container {
-  background-color: #bfdbfe;
-  background-image:
-    linear-gradient(rgba(255, 255, 255, 0.28) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.28) 1px, transparent 1px),
-    linear-gradient(rgba(0, 102, 204, 0.10) 2px, transparent 2px),
-    linear-gradient(90deg, rgba(0, 102, 204, 0.10) 2px, transparent 2px);
-}
-
-/* Info panel */
-.info-panel {
-  background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(248, 251, 255, 0.96));
-  box-shadow:
-    -24px 0 64px rgba(30, 64, 175, 0.08),
-    inset 1px 0 0 rgba(0, 102, 204, 0.08);
-}
-
-/* Plug pills */
-.info-panel .plug-pill,
-.plug-pill {
-  background: #0066cc;
-  box-shadow: 0 12px 24px rgba(0, 102, 204, 0.20);
-}
-
-/* Detail card */
-.plug-detail-card {
-  border: 1px solid rgba(147, 197, 253, 0.95);
-  background: #ffffff;
-  box-shadow:
-    0 24px 60px rgba(30, 64, 175, 0.10),
-    0 0 38px rgba(0, 166, 255, 0.12);
-}
-
-.plug-detail-header {
-  background:
-    radial-gradient(circle at top left, rgba(0, 166, 255, 0.15), transparent 34%),
-    radial-gradient(circle at bottom right, rgba(0, 102, 204, 0.12), transparent 34%),
-    linear-gradient(135deg, #f8fbff, #eaf4ff);
-}
-
-/* Fact/history boxes */
-.fact-box {
-  border: 1px solid #dbeafe;
-  background: linear-gradient(135deg, #ffffff, #f8fbff);
-}
-
-.history-box,
-.info-panel .history-box {
-  background: linear-gradient(135deg, #eff6ff, #dbeafe);
-  border: 1px solid rgba(147, 197, 253, 0.9);
-}
-
-.history-box strong,
-.info-panel .history-box strong {
-  color: #0057b8;
-}
-
-.history-box p {
-  color: #1e3a8a;
-}
-
-/* All plug types section */
-.all-plug-types-section {
-  background: rgba(255, 255, 255, 0.92);
-  border: 1px solid rgba(147, 197, 253, 0.85);
-  box-shadow: 0 18px 42px rgba(30, 64, 175, 0.08);
-}
-
-.type-reference-card {
-  background: linear-gradient(135deg, #ffffff, #f8fbff);
-  border: 1px solid #dbeafe;
-}
-<<<<<<< HEAD
-=======
-
-/* ---------- FINAL LAYOUT UPDATE: PLUGS-STYLE WIDTH + LOGO BLUE BACKGROUND ---------- */
-
-:root {
-  --site-blue: #075aa8;
-  --site-blue-dark: #003f7f;
-  --site-blue-mid: #0b72d9;
-  --site-blue-soft: #b9dbf6;
-  --site-shell-width: 1240px;
-}
-
-body {
-  background:
-    radial-gradient(circle at 16% 14%, rgba(255, 255, 255, 0.22), transparent 26%),
-    radial-gradient(circle at 82% 20%, rgba(0, 166, 255, 0.22), transparent 28%),
-    linear-gradient(180deg, #d5ecff 0%, #b5d9f2 48%, #8fc2e7 100%);
-  color: #0f172a;
-}
-
-main {
-  max-width: none;
-  width: 100%;
-}
-
-/* Make the clock panel match the wider proportions of the plug guide panel. */
-.intro-section.world-clock-section {
-  width: min(var(--site-shell-width), calc(100% - 64px));
-  max-width: var(--site-shell-width);
-  margin: 28px auto 10px;
-  padding: 30px 34px;
-  grid-template-columns: minmax(260px, 0.95fr) minmax(0, 2.15fr);
-  gap: 28px;
-  border-radius: 26px;
-  background:
-    linear-gradient(135deg, rgba(255, 255, 255, 0.97), rgba(248, 251, 255, 0.93));
-  border: 1px solid rgba(147, 197, 253, 0.92);
-  box-shadow:
-    0 28px 70px rgba(0, 63, 127, 0.16),
-    0 0 72px rgba(7, 90, 168, 0.16),
-    inset 0 1px 0 rgba(255, 255, 255, 0.96);
-}
-
-.world-clock-grid {
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 14px;
-}
-
-.world-clock-card {
-  min-height: 168px;
-  border-color: rgba(147, 197, 253, 0.92);
-  background:
-    radial-gradient(circle at top left, rgba(11, 114, 217, 0.14), transparent 36%),
-    linear-gradient(145deg, #ffffff, #f7fbff);
-}
-
-.clock-eyebrow {
-  background: rgba(7, 90, 168, 0.12);
-  color: var(--site-blue);
-}
-
-/* Center the map + side panel as one wider block, like the reference site. */
-.layout {
-  width: min(var(--site-shell-width), calc(100% - 64px));
-  max-width: var(--site-shell-width);
-  margin: 0 auto 52px;
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) 350px;
-  gap: 40px;
-  align-items: start;
-  min-height: 0;
-}
-
-.map-area {
-  padding: 30px 0 0;
-  min-width: 0;
-}
-
-/* Start the right panel at the exact visual height of the map, not beside the clock panel. */
-.info-panel {
-  margin-top: 30px;
-  align-self: start;
-  border-left: none;
-  border-radius: 0;
-  min-height: 640px;
-  padding: 30px;
-  background: rgba(255, 255, 255, 0.96);
-  border: 1px solid rgba(191, 219, 254, 0.95);
-  box-shadow:
-    0 28px 70px rgba(0, 63, 127, 0.11),
-    0 0 48px rgba(7, 90, 168, 0.10);
-}
-
-#map-wrapper {
-  border-radius: 22px;
-  border-color: rgba(147, 197, 253, 0.95);
-}
-
-#map,
-.leaflet-container {
-  background-color: #a7cfe8;
-  background-image:
-    linear-gradient(rgba(255, 255, 255, 0.22) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.22) 1px, transparent 1px),
-    linear-gradient(rgba(7, 90, 168, 0.12) 2px, transparent 2px),
-    linear-gradient(90deg, rgba(7, 90, 168, 0.12) 2px, transparent 2px);
-}
-
-.seo-content.compact-seo {
-  margin-top: 24px;
-}
-
-@media (max-width: 1100px) {
   .intro-section.world-clock-section,
   .layout {
-    width: min(100% - 36px, var(--site-shell-width));
+    width: calc(100% - 32px);
   }
 
   .intro-section.world-clock-section {
     grid-template-columns: 1fr;
+    min-height: auto;
+    padding: 30px;
+  }
+
+  .world-clock-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 
   .layout {
     grid-template-columns: 1fr;
-    gap: 24px;
+    gap: 20px;
   }
 
   .map-area {
@@ -1187,110 +699,417 @@ main {
     min-height: auto;
     border-radius: 24px;
   }
+
+  #map {
+    height: 540px;
+  }
 }
 
-@media (max-width: 700px) {
+/* ---------- MOBILE: 3 STACKED PANELS ---------- */
+
+@media (max-width: 900px) {
+  .topbar {
+    display: block;
+    position: relative;
+    padding: 42px 14px 18px;
+    text-align: center;
+  }
+
+  .topbar > div:first-child {
+    max-width: 100%;
+    padding: 0 86px;
+    text-align: center;
+  }
+
+  .topbar h1 {
+    font-size: 18px;
+    line-height: 1.12;
+    letter-spacing: -0.3px;
+    margin: 0;
+  }
+
+  .topbar p {
+    display: none;
+  }
+
+  .gmt-box {
+    position: absolute;
+    top: 8px;
+    right: 10px;
+    transform: none;
+    width: 84px;
+    min-width: 0;
+    margin: 0;
+    padding: 6px;
+    border-radius: 12px;
+    align-items: center;
+  }
+
+  .gmt-box span {
+    font-size: 6px;
+    line-height: 1.05;
+    letter-spacing: 0.3px;
+    text-align: center;
+  }
+
+  .gmt-box strong {
+    margin-top: 3px;
+    font-size: 12px;
+    letter-spacing: 0;
+  }
+
   .intro-section.world-clock-section,
   .layout {
-    width: calc(100% - 28px);
+    width: calc(100% - 20px);
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .intro-section.world-clock-section {
-    padding: 22px;
+    display: block;
+    margin-top: 12px;
+    margin-bottom: 12px;
+    padding: 14px;
+    border-radius: 20px;
+    min-height: auto;
+  }
+
+  .world-clock-heading {
+    text-align: center;
+    margin-bottom: 12px;
+  }
+
+  .clock-eyebrow {
+    font-size: 7px;
+    padding: 4px 8px;
+    margin-bottom: 6px;
+  }
+
+  .world-clock-heading h2 {
+    font-size: 18px;
+    line-height: 1.05;
+    letter-spacing: -0.5px;
+    margin: 0 0 5px;
+  }
+
+  .world-clock-heading p {
+    font-size: 10px;
+    line-height: 1.3;
+    max-width: 100%;
+    margin: 0 auto;
   }
 
   .world-clock-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 6px;
+  }
+
+  .world-clock-card {
+    min-height: 76px;
+    padding: 7px 3px;
+    border-radius: 13px;
+    text-align: center;
+    overflow: hidden;
+  }
+
+  .city-name {
+    font-size: 8px;
+    line-height: 1.05;
+    letter-spacing: -0.2px;
+  }
+
+  .timezone-label {
+    display: none;
+  }
+
+  .world-clock-time {
+    margin-top: 8px;
+    font-size: 10px;
+    line-height: 1;
+    letter-spacing: -0.4px;
+  }
+
+  .world-clock-date {
+    margin-top: 5px;
+    font-size: 7px;
+    line-height: 1.1;
+  }
+
+  .layout {
+    display: block;
+    margin-bottom: 28px;
+  }
+
+  .map-area {
+    width: 100%;
+    padding: 0;
+  }
+
+  #map-wrapper {
+    width: 100%;
+    border-radius: 20px;
+  }
+
+  #map {
+    width: 100%;
+    height: 300px;
+  }
+
+  .offset-bar {
+    min-height: 32px;
+    overflow: hidden;
+  }
+
+  .offset-cell {
+    min-width: 0;
+    font-size: 6px;
+    padding: 3px 0;
+  }
+
+  .offset-color {
+    height: 6px;
+    margin-top: 3px;
+  }
+
+  .info-panel {
+    width: 100%;
+    margin-top: 12px;
+    min-height: auto;
+    padding: 16px;
+    border-radius: 20px;
+    display: block;
+  }
+
+  .info-panel h2 {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+
+  .panel-divider {
+    margin: 14px 0;
+  }
+
+  .info-label {
+    font-size: 8px;
+    margin-top: 10px;
+    margin-bottom: 3px;
+  }
+
+  .info-value {
+    font-size: 14px;
+  }
+
+  .big-time {
+    font-size: 26px;
+  }
+
+  .country-meta {
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+
+  .country-gallery-carousel {
+    height: 160px;
+  }
+
+  .seo-content.compact-seo {
+    margin-top: 12px;
+    padding: 14px;
+    border-radius: 18px;
+  }
+}
+
+@media (max-width: 430px) {
+  .topbar > div:first-child {
+    padding: 0 72px;
+  }
+
+  .topbar h1 {
+    font-size: 16px;
+  }
+
+  .gmt-box {
+    width: 74px;
+  }
+
+  .gmt-box strong {
+    font-size: 11px;
+  }
+
+  .world-clock-heading h2 {
+    font-size: 16px;
+  }
+
+  .world-clock-heading p {
+    font-size: 9px;
+  }
+
+  .world-clock-grid {
+    gap: 4px;
+  }
+
+  .world-clock-card {
+    min-height: 70px;
+  }
+
+  .city-name {
+    font-size: 7px;
+  }
+
+  .world-clock-time {
+    font-size: 9px;
+  }
+
+  .world-clock-date {
+    font-size: 6px;
+  }
+
+  #map {
+    height: 280px;
+  }
+
+  .country-meta {
     grid-template-columns: 1fr;
   }
 }
 
-/* ---------- REVISION: CLOSER TO PLUGTYPESOFTHEWORLD SPACING ---------- */
+/* ---------- FINAL MOBILE REFINEMENTS ---------- */
 
-:root {
-  --site-shell-width: 1400px;
+.layout .seo-content.compact-seo {
+  grid-column: 1 / -1;
 }
 
-/* Less side margin, more full-width like the plug map site. */
-.intro-section.world-clock-section,
-.layout {
-  width: min(var(--site-shell-width), calc(100% - 40px));
-}
-
-/* Make the clock panel feel thicker/taller like the plug guide panel. */
-.intro-section.world-clock-section {
-  margin-top: 30px;
-  margin-bottom: 8px;
-  padding: 40px 38px;
-  min-height: 292px;
-  grid-template-columns: minmax(300px, 0.92fr) minmax(0, 2.3fr);
-  gap: 32px;
-  border-radius: 30px;
-}
-
-.world-clock-heading h2 {
-  font-size: 34px;
-  line-height: 1.08;
-  letter-spacing: -1.1px;
-}
-
-.world-clock-heading p {
-  font-size: 16px;
-  max-width: 340px;
-}
-
-.world-clock-grid {
-  gap: 16px;
-}
-
-.world-clock-card {
-  min-height: 198px;
-  padding: 22px;
-  border-radius: 24px;
-}
-
-.city-name {
-  font-size: 22px;
-}
-
-.world-clock-time {
-  font-size: 32px;
-}
-
-/* Give the map block more room without squeezing the side panel too much. */
-.layout {
-  grid-template-columns: minmax(0, 1fr) 360px;
-  gap: 44px;
-}
-
-.map-area {
-  padding-top: 32px;
-}
-
-.info-panel {
-  margin-top: 32px;
-  min-height: 640px;
-}
-
-@media (max-width: 1100px) {
-  .intro-section.world-clock-section,
-  .layout {
-    width: calc(100% - 32px);
+@media (max-width: 900px) {
+  .topbar {
+    padding-top: 46px;
   }
 
-  .intro-section.world-clock-section {
-    min-height: auto;
-    padding: 30px;
+  .topbar > div:first-child {
+    padding: 0 78px;
+  }
+
+  .topbar h1 {
+    font-size: 20px;
+    line-height: 1.15;
+    text-align: center;
+  }
+
+  .gmt-box {
+    top: 8px;
+    right: 10px;
+  }
+
+  .layout .seo-content.compact-seo {
+    width: 100%;
+    margin-top: 12px;
   }
 }
 
-@media (max-width: 700px) {
-  .intro-section.world-clock-section,
-  .layout {
-    width: calc(100% - 24px);
+@media (max-width: 430px) {
+  .topbar > div:first-child {
+    padding: 0 70px;
   }
 
-  .intro-section.world-clock-section {
-    padding: 22px;
+  .topbar h1 {
+    font-size: 18px;
   }
 }
->>>>>>> d14b168 (Update website layout)
+
+/* ---------- FINAL FINAL CLOCK PANEL POLISH ---------- */
+
+@media (max-width: 900px) {
+  .world-clock-heading {
+    width: 100%;
+    text-align: center;
+  }
+
+  .world-clock-heading h2 {
+    display: block;
+    width: 100%;
+    max-width: none;
+    margin: 0 auto 8px;
+    text-align: center;
+    font-size: 28px;
+    line-height: 1.05;
+    letter-spacing: -0.8px;
+  }
+
+  .world-clock-heading p {
+    max-width: 96%;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 12px;
+  }
+
+  .clock-eyebrow {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .city-name {
+    font-size: 13px;
+    line-height: 1;
+  }
+
+  .world-clock-time {
+    font-size: 18px;
+    font-weight: 950;
+    letter-spacing: -0.6px;
+  }
+
+  .world-clock-date {
+    font-size: 9px;
+  }
+}
+
+@media (max-width: 430px) {
+  .world-clock-heading h2 {
+    font-size: 24px;
+  }
+
+  .world-clock-heading p {
+    font-size: 10px;
+  }
+
+  .city-name {
+    font-size: 11px;
+  }
+
+  .world-clock-time {
+    font-size: 15px;
+  }
+
+  .world-clock-date {
+    font-size: 8px;
+  }
+}
+
+/* ---------- FINAL TOP TITLE POSITION ---------- */
+
+@media (max-width: 900px) {
+  .topbar {
+    padding-top: 26px;
+    padding-bottom: 24px;
+  }
+
+  .topbar h1 {
+    font-size: 24px;
+    line-height: 1.08;
+  }
+
+  .gmt-box {
+    top: 8px;
+  }
+}
+
+@media (max-width: 430px) {
+  .topbar {
+    padding-top: 24px;
+    padding-bottom: 22px;
+  }
+
+  .topbar h1 {
+    font-size: 21px;
+  }
+}

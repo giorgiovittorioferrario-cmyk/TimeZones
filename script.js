@@ -1692,3 +1692,40 @@ function updateWorldClocks() {
 
 updateWorldClocks();
 setInterval(updateWorldClocks, 1000);
+
+/* ---------- KEYBOARD SHORTCUT: H = HOME BUTTON ---------- */
+
+document.addEventListener("keydown", function (event) {
+  const isTyping =
+    event.target.tagName === "INPUT" ||
+    event.target.tagName === "TEXTAREA" ||
+    event.target.isContentEditable;
+
+  if (isTyping) return;
+
+  if (event.key.toLowerCase() === "h") {
+    const homeButton = document.querySelector(".leaflet-control-home");
+
+    if (homeButton) {
+      homeButton.click();
+    }
+  }
+});
+
+function updateMobileInteractionText() {
+  const timezoneTitle = document.querySelector(".info-panel h2");
+  const timezoneInfo = document.querySelector("#timezone-info");
+
+  if (window.innerWidth <= 900) {
+    if (timezoneTitle) {
+      timezoneTitle.textContent = "Clicked Timezone";
+    }
+
+    if (timezoneInfo && timezoneInfo.textContent.includes("Hover")) {
+      timezoneInfo.innerHTML = "<p>Click on the map to see timezone information.</p>";
+    }
+  }
+}
+
+window.addEventListener("load", updateMobileInteractionText);
+window.addEventListener("resize", updateMobileInteractionText);
